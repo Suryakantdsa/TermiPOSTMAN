@@ -8,7 +8,7 @@ func (m Model) View() string {
 
 	return box.Render(
 		lipgloss.JoinVertical(lipgloss.Left,
-			title.Render("🔁 REST API TESTER"),
+			title.Render("🔁 Terminal based POSTMAN"),
 			labelStyle.Render("URL: ")+m.URIinput.View(),
 			labelStyle.Render("Method: ")+m.MethodInput.View(),
 			labelStyle.Render("Header: ")+m.HeaderInput.View(),
