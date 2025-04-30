@@ -31,20 +31,27 @@ func (m *Model) Update(message tea.Msg) (tea.Model, tea.Cmd) {
 
 				return ResponseMsg{Body: body, Err: err}
 			}
-
+		case "up", "down", "pgup", "pgdown":
+			var cmd tea.Cmd
+			m.ResponseArea, cmd = m.ResponseArea.Update(message)
+			return m, cmd
 		}
 	case ResponseMsg:
 		if message.Err != nil {
 			m.ResponseArea.SetValue("error: " + message.Err.Error())
 		} else {
 			m.ResponseArea.SetValue(message.Body)
+
 		}
+		m.ResponseArea.CursorDown()
 		return m, nil
 	case tea.WindowSizeMsg:
 		m.Width = message.Width
 		m.Height = message.Height
+		m.ResponseArea.SetWidth(m.Width - 10)
 		return m, nil
 	}
+
 	inputs := []*textinput.Model{
 		&m.URIinput,
 		&m.MethodInput,
@@ -60,7 +67,7 @@ func (m *Model) Update(message tea.Msg) (tea.Model, tea.Cmd) {
 		}
 
 		updatedModel, cmd := input.Update(message)
-		*input = updatedModel // ← THIS LINE IS CRUCIAL
+		*input = updatedModel
 		cmds = append(cmds, cmd)
 	}
 	return m, tea.Batch(cmds...)

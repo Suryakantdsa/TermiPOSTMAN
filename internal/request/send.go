@@ -2,8 +2,10 @@ package request
 
 import (
 	"bytes"
-	"io"
+	"encoding/json"
+	"fmt"
 	"net/http"
+	"time"
 )
 
 type RequestData struct {
@@ -14,7 +16,7 @@ type RequestData struct {
 }
 
 func SendRequest(data RequestData) (string, error) {
-
+	start := time.Now()
 	client := &http.Client{}
 	req, err := http.NewRequest(data.Method, data.URL, bytes.NewBufferString(data.Body))
 	if err != nil {
@@ -28,9 +30,27 @@ func SendRequest(data RequestData) (string, error) {
 		return "", err
 	}
 	defer resp.Body.Close()
-	bodyBytes, err := io.ReadAll(resp.Body)
+	duration := time.Since(start)
+	var body bytes.Buffer
+	_, err = body.ReadFrom(resp.Body)
 	if err != nil {
 		return "", err
 	}
-	return string(bodyBytes), nil
+
+	var prettyJSON bytes.Buffer
+	err = json.Indent(&prettyJSON, body.Bytes(), "", "  ")
+	if err != nil {
+		return "", err
+	}
+	result := fmt.Sprintf(
+		"Status: %d | Time: %s\n\n\n%s",
+		resp.StatusCode,
+		duration.String(),
+		prettyJSON.String(),
+	)
+	// bodyBytes, err := io.ReadAll(resp.Body)
+	// if err != nil {
+	// 	return "", err
+	// }
+	return string(result), nil
 }

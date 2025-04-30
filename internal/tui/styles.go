@@ -1,6 +1,8 @@
 package tui
 
-import "github.com/charmbracelet/lipgloss"
+import (
+	"github.com/charmbracelet/lipgloss"
+)
 
 // var (
 // 	boxStyle = lipgloss.NewStyle().

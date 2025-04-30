@@ -28,7 +28,8 @@ func New() *Model {
 	responseArea := textarea.New()
 	responseArea.Placeholder = "Response will appear here.."
 	responseArea.SetHeight(10)
-	responseArea.SetWidth(100)
+	responseArea.SetWidth(10)
+	responseArea.Focus()
 	responseArea.ShowLineNumbers = true
 	responseArea.FocusedStyle.CursorLine = responseArea.FocusedStyle.CursorLine.Bold(true)
 
