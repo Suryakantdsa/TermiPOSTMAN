@@ -1,18 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"os"
+	"log"
 
 	"github.com/Suryakantdsa/postman-tui/internal/tui"
 	tea "github.com/charmbracelet/bubbletea"
 )
 
 func main() {
-	p := tea.NewProgram(tui.New())
-
-	if _, err := p.Run(); err != nil {
-		fmt.Println("Error", err)
-		os.Exit(1)
+	model := tui.New()
+	if err := tea.NewProgram(model).Start(); err != nil {
+		log.Fatal(err)
 	}
 }

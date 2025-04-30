@@ -6,7 +6,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-func (m Model) Update(message tea.Msg) (tea.Model, tea.Cmd) {
+func (m *Model) Update(message tea.Msg) (tea.Model, tea.Cmd) {
 	var cmds []tea.Cmd
 
 	switch message := message.(type) {
@@ -33,12 +33,23 @@ func (m Model) Update(message tea.Msg) (tea.Model, tea.Cmd) {
 			}
 
 		}
+	case ResponseMsg:
+		if message.Err != nil {
+			m.ResponseArea.SetValue("error: " + message.Err.Error())
+		} else {
+			m.ResponseArea.SetValue(message.Body)
+		}
+		return m, nil
+	case tea.WindowSizeMsg:
+		m.Width = message.Width
+		m.Height = message.Height
+		return m, nil
 	}
 	inputs := []*textinput.Model{
 		&m.URIinput,
-		&m.BodyInput,
-		&m.HeaderInput,
 		&m.MethodInput,
+		&m.HeaderInput,
+		&m.BodyInput,
 	}
 
 	for i, input := range inputs {
@@ -48,7 +59,8 @@ func (m Model) Update(message tea.Msg) (tea.Model, tea.Cmd) {
 			input.Blur()
 		}
 
-		_, cmd := input.Update(message)
+		updatedModel, cmd := input.Update(message)
+		*input = updatedModel // ← THIS LINE IS CRUCIAL
 		cmds = append(cmds, cmd)
 	}
 	return m, tea.Batch(cmds...)
