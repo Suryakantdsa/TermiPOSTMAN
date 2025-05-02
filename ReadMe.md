@@ -4,9 +4,7 @@ A beautiful and intuitive Postman-like API testing tool — right in your termin
 Built using [Bubbletea](https://github.com/charmbracelet/bubbletea), [Lipgloss](https://github.com/charmbracelet/lipgloss), and pure Go.
 
 ---
-
-https://github.com/user-attachments/assets/d3ac333b-77ac-424b-bf3a-4d57ff2c648e
-
+![Uploading Untitled design (1).gif…]()
 
 ## 🚀 Features
 
