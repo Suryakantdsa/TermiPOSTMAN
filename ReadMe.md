@@ -5,7 +5,8 @@ Built using [Bubbletea](https://github.com/charmbracelet/bubbletea), [Lipgloss](
 
 ---
 
-![Untitled design](https://github.com/user-attachments/assets/da622392-4788-4625-9bba-042b65d7a3df)
+https://github.com/user-attachments/assets/d3ac333b-77ac-424b-bf3a-4d57ff2c648e
+
 
 ## 🚀 Features
 
