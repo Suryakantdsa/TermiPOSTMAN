@@ -68,7 +68,8 @@ furnished to do so, subject to the following conditions:
 
 [... truncated for brevity, but keep the full MIT license in your README or LICENSE file ...]
 
-👤 Author
-Suryakant das
-github.com/Suryakantdsa/
-Twitter - https://x.com/_1996surya
+### 👤 Author
+
+- Suryakant das
+- github.com/Suryakantdsa/
+- Twitter - https://x.com/_1996surya
