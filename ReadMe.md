@@ -5,7 +5,8 @@ Built using [Bubbletea](https://github.com/charmbracelet/bubbletea), [Lipgloss](
 
 ---
 
-![TermiPOSTMAN Screenshot](https://user-images.githubusercontent.com/YOUR_USERNAME/demo.gif)
+![Untitled design (1)](https://github.com/user-attachments/assets/61351da6-46e1-4d87-946e-077994814828)
+
 
 ## 🚀 Features
 
