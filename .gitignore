@@ -1,41 +1,35 @@
-# Binaries
+# Binaries for programs and plugins
 *.exe
 *.dll
 *.so
 *.dylib
-
-# Go build cache
-go.mod
-go.sum
-vendor/
-
-# Test cache
-_test
 *.test
 *.out
 
-# IDE-specific files and directories
-.idea/
+# Output of `go build`
+postman-tui
+
+# Vendor directory (if not using Go modules)
+vendor/
+
+# Go workspace file (if you're not sharing it)
+go.work
+go.work.sum
+
+# Dependency directories (Go modules)
+go.sum
+
+# IDE/editor settings
 .vscode/
+.idea/
+*.swp
 
 # OS-specific files
 .DS_Store
 Thumbs.db
 
-# Personal or temporary files
+# Logs
 *.log
-*.swp
-*.swo
-*~
-.#*
 
-# Coverage files
-coverage.out
-
-# If you use Docker
-docker-compose.override.yml
-
-# Any other project-specific files or directories you want to ignore
-# Example: Configuration files that might contain sensitive info
-# config.yaml
-# .env
+# TUI-related cache (if any is created)
+*.cache
