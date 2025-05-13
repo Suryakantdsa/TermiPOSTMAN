@@ -6,11 +6,13 @@ import (
 )
 
 type Model struct {
-	URIinput     textinput.Model
-	MethodInput  textinput.Model
+	URIinput textinput.Model
+	// MethodInput  textinput.Model
+	MethodInput  []string
 	HeaderInput  textinput.Model
-	BodyInput    textinput.Model
+	BodyInput    textarea.Model
 	FocusIndex   int
+	MethodIndex  int
 	ResponseArea textarea.Model
 	Width        int
 	Height       int
